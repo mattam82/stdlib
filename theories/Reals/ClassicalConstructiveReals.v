@@ -312,12 +312,14 @@ Definition DRealConstructive : ConstructiveReals
        Rarchimedean Rabove_pos
        Rabs_quot RabsLUB Rcomplete.
 
+Typeclasses Transparent CRcarrier CReq CRealConstructive.
+
 Definition Rrepr_morphism
   : @ConstructiveRealsMorphism DRealConstructive CRealConstructive.
 Proof.
   apply (Build_ConstructiveRealsMorphism
            DRealConstructive CRealConstructive Rrepr).
-  - intro q. simpl. unfold IQR. rewrite Rquot2. apply CRealEq_refl.
+  - intro q. simpl. unfold IQR. change (CReq CRealConstructive) with CRealEq. now rewrite Rquot2.
   - intros. simpl. simpl in H. rewrite Rlt_def in H.
     apply CRealLtEpsilon in H. exact H.
 Defined.

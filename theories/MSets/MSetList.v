@@ -480,6 +480,7 @@ Module MakeRaw (X: OrderedType) <: RawSets X.
   right; intuition; inv; auto.
   Qed.
 
+  #[local] Typeclasses Transparent Equal elt.
   Lemma equal_spec :
    forall (s s' : t) (Hs : Ok s) (Hs' : Ok s'),
    equal s s' = true <-> Equal s s'.
@@ -811,6 +812,7 @@ Module MakeRaw (X: OrderedType) <: RawSets X.
   End ForNotations.
 
   Definition In := InA X.eq.
+  #[local] Typeclasses Transparent In.
 #[global]
   Instance In_compat : Proper (X.eq==>eq==> iff) In.
   Proof. repeat red; intros; rewrite H, H0; auto. Qed.
@@ -818,6 +820,7 @@ Module MakeRaw (X: OrderedType) <: RawSets X.
   Module L := MakeListOrdering X.
   Definition eq := L.eq.
   Definition eq_equiv := L.eq_equiv.
+  #[local] Typeclasses Transparent elt eq Equal t.
   Definition lt l1 l2 :=
     exists l1' l2', Ok l1' /\ Ok l2' /\ eq l1 l1' /\ eq l2 l2' /\ L.lt l1' l2'.
 

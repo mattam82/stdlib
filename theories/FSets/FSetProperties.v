@@ -32,6 +32,7 @@ Module WProperties_fun (Import E : DecidableType)(M : WSfun E).
   Module Import Dec := WDecide_fun E M.
   Module Import FM := Dec.F (* FSetFacts.WFacts_fun E M *).
   Import M.
+  #[export] Typeclasses Transparent elt.
 
   Lemma In_dec : forall x s, {In x s} + {~ In x s}.
   Proof.

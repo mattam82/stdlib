@@ -23,6 +23,7 @@ From Stdlib Require Import Decidable Setoid DecidableTypeEx FSetFacts.
 
 Module WDecide_fun (E : DecidableType)(Import M : WSfun E).
  Module F := FSetFacts.WFacts_fun E M.
+ #[export] Typeclasses Transparent elt.
 
 (** * Overview
     This functor defines the tactic [fsetdec], which will
@@ -753,7 +754,6 @@ the above form:
   (** * Examples *)
 
   Module FSetDecideTestCases.
-
     Lemma test_eq_trans_1 : forall x y z s,
       E.eq x y ->
       ~ ~ E.eq z y ->

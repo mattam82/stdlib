@@ -677,6 +677,7 @@ rewrite (MapsTo_iff m e Hk), find_mapsto_iff, find_mapsto_iff, Hm;
  intuition.
 Qed.
 
+Typeclasses Transparent key.
 Add Parametric Morphism elt : (@Empty elt)
  with signature Equal ==> iff as Empty_m.
 Proof.
@@ -2155,7 +2156,7 @@ Module OrdProperties (M:S).
     inversion_clear H1 as [? ? H2|? ? H2].
     + red in H2; destruct H2; simpl in *; ME.order.
     + inversion_clear H4. rename H1 into H3.
-      rewrite (@InfA_alt _ eqke) in H3 by auto with typeclass_instances.
+      rewrite (@InfA_alt _ eqke) in H3; try unfold lt_key; auto with typeclass_instances.
       apply (H3 (y,x0)); auto.
   Qed.
 

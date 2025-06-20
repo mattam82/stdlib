@@ -27,7 +27,7 @@ Local Ltac extra_reify :=
 
 #[export] Instance Rri : Ring (Ro:=Rops).
 Proof.
-  split.
+  split. all: unfold equality, eq_notation.
   { exact _. }
   1,2,3,4: Morphisms.solve_proper.
   - exact Rplus_0_l.

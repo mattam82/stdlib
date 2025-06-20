@@ -25,6 +25,8 @@ Module KeyDecidableType(D:DecidableType).
  #[global]
  Hint Unfold eqk eqke : core.
 
+ #[export] Typeclasses Transparent eqk eqke.
+
  (** eqk, eqke are equalities *)
 
 #[global]
@@ -197,6 +199,7 @@ Module PairDecidableType(D1 D2:DecidableType) <: DecidableType.
 
  Definition eq := (D1.eq * D2.eq)%signature.
 
+ #[export] Typeclasses Transparent eq.
 #[global]
  Instance eq_equiv : Equivalence eq := _.
 
@@ -214,6 +217,7 @@ End PairDecidableType.
 Module PairUsualDecidableType(D1 D2:UsualDecidableType) <: UsualDecidableType.
  Definition t := (D1.t * D2.t)%type.
  Definition eq := @eq t.
+ #[export] Typeclasses Transparent eq.
 #[global]
  Instance eq_equiv : Equivalence eq := _.
  Definition eq_dec : forall x y, { eq x y }+{ ~eq x y }.

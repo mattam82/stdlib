@@ -49,6 +49,7 @@ Local Open Scope NScope.
 Module Z.
 
 Definition t := (N.t * N.t)%type.
+#[export] Typeclasses Transparent t.
 Definition zero : t := (0, 0).
 Definition one : t := (1,0).
 Definition two : t := (2,0).
@@ -174,6 +175,7 @@ Qed.
 Section Induction.
 Variable A : Z.t -> Prop.
 Hypothesis A_wd : Proper (Z.eq==>iff) A.
+#[local] Typeclasses Transparent Z.t Z.eq.
 
 Theorem bi_induction :
   A 0 -> (forall n, A n <-> A (Z.succ n)) -> forall n, A n.

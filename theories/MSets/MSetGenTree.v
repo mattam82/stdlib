@@ -49,6 +49,8 @@ Module Type Ops (X:OrderedType)(Info:InfoTyp).
 Definition elt := X.t.
 #[global]
 Hint Transparent elt : core.
+#[global]
+Typeclasses Transparent elt.
 
 Inductive tree  : Type :=
 | Leaf : tree

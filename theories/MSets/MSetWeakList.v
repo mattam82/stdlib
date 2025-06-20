@@ -117,6 +117,8 @@ End Ops.
 Module MakeRaw (X:DecidableType) <: WRawSets X.
   Include Ops X.
 
+  #[export] Typeclasses Transparent elt t.
+
   Section ForNotations.
   Notation NoDup := (NoDupA X.eq).
   Notation In := (InA X.eq).
@@ -531,6 +533,7 @@ Module MakeRaw (X:DecidableType) <: WRawSets X.
 
   Definition In := InA X.eq.
   Definition eq := Equal.
+  #[local] Typeclasses Transparent eq Equal.
 #[global]
   Instance eq_equiv : Equivalence eq := _.
 

@@ -83,6 +83,7 @@ Qed.
 
 Definition inclA l l' := forall x, InA x l -> InA x l'.
 Definition equivlistA l l' := forall x, InA x l <-> InA x l'.
+#[export] Typeclasses Transparent equivlistA.
 
 Lemma incl_nil l : inclA nil l.
 Proof. intros a H. inversion H. Qed.

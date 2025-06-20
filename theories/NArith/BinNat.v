@@ -70,6 +70,7 @@ Definition Odd n := exists m, n = 2*m+1.
 
 (** Proofs of morphisms, obvious since eq is Leibniz *)
 
+#[local] Typeclasses Transparent eq.
 Local Obligation Tactic := simpl_relation.
 Program Definition succ_wd : Proper (eq==>eq) succ := _.
 Program Definition pred_wd : Proper (eq==>eq) pred := _.

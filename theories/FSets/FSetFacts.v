@@ -24,7 +24,7 @@ Unset Strict Implicit.
 (** First, a functor for Weak Sets in functorial version. *)
 
 Module WFacts_fun (Import E : DecidableType)(Import M : WSfun E).
-
+#[local] Typeclasses Transparent elt.
 Notation eq_dec := E.eq_dec.
 Definition eqb x y := if eq_dec x y then true else false.
 

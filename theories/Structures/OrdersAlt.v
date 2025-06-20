@@ -96,7 +96,7 @@ Module Backport_OT (O:OrderedType) <: OrderedTypeOrig.
 
  Lemma lt_not_eq : forall x y, lt x y -> ~eq x y.
  Proof.
-  intros x y L E; rewrite E in L. apply (StrictOrder_Irreflexive y); auto.
+  unfold lt; intros x y L E; rewrite E in L. apply (StrictOrder_Irreflexive y); auto.
  Qed.
 
  Lemma lt_trans : Transitive lt.

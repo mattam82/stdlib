@@ -494,7 +494,7 @@ Module PositiveMap <: S with Module E:=PositiveOrderedTypeBits.
           E.eq (fst p) (fst p') /\ (snd p) = (snd p').
 
   Definition lt_key (p p':key*A) := E.lt (fst p) (fst p').
-
+  #[local] Typeclasses Transparent eq_key eq_key_elt ME.eqk ME.eqke lt_key ME.ltk E.eq E.lt key eq_key_elt.
   Global Instance eqk_equiv : Equivalence eq_key := _.
   Global Instance eqke_equiv : Equivalence eq_key_elt := _.
   Global Instance ltk_strorder : StrictOrder lt_key := _.

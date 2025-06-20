@@ -1013,7 +1013,7 @@ Module PositiveSet <: S with Module E:=PositiveOrderedTypeBits.
     - constructor.
     - intros x y _ H'. inversion H'.
   Qed.
-
+  
   Lemma elements_3w: forall s, NoDupA E.eq (elements s).
   Proof.
     intro. apply SortA_NoDupA with E.lt.
@@ -1024,7 +1024,7 @@ Module PositiveSet <: S with Module E:=PositiveOrderedTypeBits.
     - constructor.
       + intros x H. apply E.lt_not_eq in H. apply H. reflexivity.
       + intro. apply E.lt_trans.
-    - solve_proper.
+    - unfold E.eq, E.lt; solve_proper.
     - apply elements_3.
   Qed.
 

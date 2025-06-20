@@ -26,6 +26,7 @@ Module Backport_WSets
 
  Definition elt := E.t.
  Definition t := M.t.
+ #[export] Typeclasses Transparent elt t.
 
  Implicit Type s : t.
  Implicit Type x y : elt.
@@ -204,6 +205,10 @@ Module Backport_Sets
    := M.choose_spec3.
   Definition lt_trans : forall s s' s'', lt s s' -> lt s' s'' -> lt s s''
    := @StrictOrder_Transitive _ _ M.lt_strorder.
+   Set Rewrite Output Constraints.
+
+
+  #[local] Typeclasses Transparent M.eq.
   Lemma lt_not_eq : forall s s',  lt s s' -> ~ eq s s'.
   Proof.
    unfold lt, eq. intros s s' Hlt Heq. rewrite Heq in Hlt.
@@ -230,6 +235,7 @@ Module Update_WSets
 
  Definition elt := E.t.
  Definition t := M.t.
+ #[export] Typeclasses Transparent elt t.
 
  Implicit Type s : t.
  Implicit Type x y : elt.
@@ -262,6 +268,7 @@ Module Update_WSets
  Definition cardinal : t -> nat := M.cardinal.
  Definition elements : t -> list elt := M.elements.
  Definition choose : t -> option elt := M.choose.
+ #[export] Typeclasses Transparent Equal eq M.eq.
 
  Module MF := FSetFacts.WFacts M.
 

@@ -9,7 +9,7 @@ Instance Ring_ops_Zmod m : @Ring_ops (Zmod m) Zmod.zero Zmod.one Zmod.add Zmod.m
 #[export]
 Instance Ring_Zmod m : Ring (Ro:=Ring_ops_Zmod m).
 Proof.
-  split.
+  split; unfold equality, eq_notation.
   { apply eq_equivalence. }
   1,2,3,4 : Morphisms.solve_proper.
   { apply Zmod.add_0_l. }

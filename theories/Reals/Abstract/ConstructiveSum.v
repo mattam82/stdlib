@@ -321,6 +321,9 @@ Definition series_cv {R : ConstructiveReals}
            (un : nat -> CRcarrier R) (s : CRcarrier R) : Set
   := CR_cv R (CRsum un) s.
 
+Instance series_cv_Proper {R} un : CMorphisms.Proper (CMorphisms.respectful (CReq R) CRelationClasses.iffT) (series_cv un) :=
+  CR_cv_morph (CRsum un).
+
 Definition series_cv_lim_lt {R : ConstructiveReals}
            (un : nat -> CRcarrier R) (x : CRcarrier R) : Set
   := { l : CRcarrier R & prod (series_cv un l) (l < x) }.
@@ -624,6 +627,8 @@ Proof.
       * rewrite CRplus_comm, CRopp_plus_distr, CRplus_assoc.
         rewrite CRplus_opp_l, CRplus_0_r. reflexivity.
 Qed.
+
+(* Set Rewrite Output Constraints. *)
 
 Lemma series_cv_shift' : forall {R : ConstructiveReals}
                            (un : nat -> CRcarrier R) (s : CRcarrier R) (shift : nat),

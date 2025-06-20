@@ -102,6 +102,7 @@ Definition PEevalR : list R -> PEZ -> R :=
 Lemma P0Z_correct : forall l, PhiR l P0Z = 0.
 Proof. trivial. Qed.
 
+#[local] Typeclasses Transparent equality eq_notation addition add_notation multiplication mul_notation opposite opp_notation.
 Lemma Rext: ring_eq_ext add mul opp _==_.
 Proof.
 constructor; solve_proper.

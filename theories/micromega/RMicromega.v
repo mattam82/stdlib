@@ -520,6 +520,8 @@ Definition RTautoChecker (f : BFormula (Formula Rcst) Tauto.isProp) (w: list RWi
   (Rnormalise unit) (Rnegate unit)
   RWitness (fun cl => RWeakChecker (List.map fst cl)) (map_bformula (map_Formula Q_of_Rcst)  f) w.
 
+#[global] Typeclasses Transparent eiff rtyp.
+
 Lemma RTautoChecker_sound : forall f w, RTautoChecker f w = true -> forall env, eval_bf  (Reval_formula env)  f.
 Proof.
   intros f w.

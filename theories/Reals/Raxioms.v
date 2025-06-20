@@ -480,7 +480,7 @@ Proof.
     + apply Rquot1. rewrite Rquot2. reflexivity.
   - intros. destruct a. apply Rrepr_le. rewrite Rquot2.
     unfold CRealLe. apply H3. intros y Ey.
-    intros. rewrite <- (Rquot2 y) in H4.
+    intros. cbn in H4. rewrite <- (Rquot2 y) in H4.
     apply Rrepr_le in H4.
     + exact H4.
     + apply H1, Ey.

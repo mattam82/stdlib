@@ -116,6 +116,7 @@ End HasWOps.
 
 Module Type WOps (E : DecidableType).
   Definition elt := E.t.
+  #[export] Typeclasses Transparent elt.
   Parameter t : Type. (** the abstract type of sets *)
   Include HasWOps.
 End WOps.
@@ -456,6 +457,7 @@ Module WRaw2SetsOn (E:DecidableType)(M:WRawSets E) <: WSetsOn E.
  Record t_ := Mkt {this :> M.t; is_ok : M.Ok this}.
  Definition t := t_.
  Arguments Mkt this {is_ok}.
+ #[export] Typeclasses Transparent elt M.elt t.
  #[global]
  Hint Resolve is_ok : typeclass_instances.
 
@@ -614,6 +616,7 @@ Module Raw2SetsOn (O:OrderedType)(M:RawSets O) <: SetsOn O.
   Definition max_elt (s:t) : option elt := M.max_elt s.
   Definition lt (s s':t) := M.lt s s'.
 
+  #[local] Typeclasses Transparent M.elt M.eq eq lt.
   (** Specification of [lt] *)
 #[global]
   Instance lt_strorder : StrictOrder lt.
@@ -623,7 +626,7 @@ Proof.
   - intros. transitivity y; auto.
   Qed.
 
-#[global]
+  #[global]
   Instance lt_compat : Proper (eq==>eq==>iff) lt.
   Proof.
   repeat red. unfold eq, lt.
@@ -907,10 +910,11 @@ Module MakeListOrdering (O:OrderedType).
  Local Notation In := (InA O.eq).
 
  Definition eq s s' := forall x, In x s <-> In x s'.
+ #[export] Typeclasses Transparent eq.
 
 #[global]
  Instance eq_equiv : Equivalence eq := _.
-
+ 
  Inductive lt_list : t -> t -> Prop :=
     | lt_nil : forall x s, lt_list nil (x :: s)
     | lt_cons_lt : forall x y s s',

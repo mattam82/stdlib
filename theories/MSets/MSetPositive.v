@@ -30,6 +30,7 @@ Module PositiveSet <: S with Module E:=PositiveOrderedTypeBits.
   Module E:=PositiveOrderedTypeBits.
 
   Definition elt := positive : Type.
+  #[local] Typeclasses Transparent elt.
 
   Inductive tree :=
     | Leaf : tree
@@ -38,7 +39,8 @@ Module PositiveSet <: S with Module E:=PositiveOrderedTypeBits.
   Scheme tree_ind := Induction for tree Sort Prop.
 
   Definition t := tree : Type.
-
+  #[local] Typeclasses Transparent t.
+  
   Definition empty : t := Leaf.
 
   Fixpoint is_empty (m : t) : bool :=
@@ -313,6 +315,9 @@ Module PositiveSet <: S with Module E:=PositiveOrderedTypeBits.
   Qed.
 
   (** Specification of [eq] *)
+
+  Local Instance Equal_equiv : Equivalence Equal.
+  Proof. firstorder. Qed.
 
   Local Instance eq_equiv : Equivalence eq.
   Proof. firstorder. Qed.
@@ -926,7 +931,7 @@ Module PositiveSet <: S with Module E:=PositiveOrderedTypeBits.
 
   Lemma elements_spec2w: forall s, NoDupA E.eq (elements s).
   Proof.
-    intro. apply SortA_NoDupA with E.lt; auto with *.
+    intro. apply SortA_NoDupA with E.lt; unfold E.eq; auto with *.
     apply elements_spec2.
   Qed.
 

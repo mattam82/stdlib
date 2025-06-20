@@ -63,8 +63,9 @@ Program Instance equiv_symmetric `(sa : Equivalence A) : Symmetric equiv.
 Program Instance equiv_transitive `(sa : Equivalence A) : Transitive equiv.
 
   Next Obligation.
-  Proof. intros A R sa x y z Hxy Hyz.
-         now transitivity y.
+  Proof.
+    unfold equiv; intros A R sa x y z Hxy Hyz.
+    now transitivity y.
   Qed.
 
 Arguments equiv_symmetric {A R} sa x y : rename.

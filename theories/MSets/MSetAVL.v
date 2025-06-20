@@ -56,6 +56,7 @@ Local Notation int := I.t.
 Include MSetGenTree.Ops X I.
 
 Definition t := tree.
+#[local] Typeclasses Transparent t.
 
 (** ** Height of trees *)
 
@@ -640,6 +641,7 @@ Proof.
  - apply create_spec.
 Qed.
 
+#[local] Typeclasses Transparent join.
 #[global]
 Instance join_ok : forall l x r `(Ok l, Ok r, lt_tree x l, gt_tree x r),
  Ok (join l x r).

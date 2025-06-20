@@ -70,6 +70,7 @@ Module KeyOrderedType(O:OrderedType).
 
  #[global]
  Hint Unfold ltk : core.
+ #[export] Typeclasses Transparent ltk.
 
  (* ltk is a strict order *)
 

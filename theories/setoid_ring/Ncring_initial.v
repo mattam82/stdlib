@@ -26,6 +26,7 @@ Proof. exact Z.eq_equiv. Qed.
 Instance Zops:@Ring_ops Z 0%Z 1%Z Z.add Z.mul Z.sub Z.opp (@eq Z).
 Defined.
 
+#[local] Typeclasses Transparent equality eq_notation.
 #[global]
 Instance Zr: (@Ring _ _ _ _ _ _ _ _ Zops).
 Proof.
