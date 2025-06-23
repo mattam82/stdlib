@@ -71,6 +71,7 @@ Definition lift_relation {A} (R : A -> Prop) (defaultA : A) (m1 : t A) : Prop :=
 
 Definition Q : Prop -> Prop := fun H => H.
 
+Typeclasses Transparent Q lift_relation.
 #[local]
 Declare Instance lift0 : forall (A : Type) (default : A) (R : A -> Prop),
    Test (fun x : A => Q (R x)) ->

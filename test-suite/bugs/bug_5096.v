@@ -171,7 +171,7 @@ Definition ContextOn {Name1 Name2} f {var} (Ctx : Context Name1 var) : Context N
         empty := empty |}.
 
 Definition Register := Datatypes.unit.
-
+Typeclasses Transparent Register.
 Global Instance RegisterContext {var : Type} : Context Register var
   := ContextOn (fun _ => 1%positive) (pos_context var).
 

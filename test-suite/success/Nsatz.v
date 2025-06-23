@@ -56,6 +56,7 @@ Proof.
 Qed.
 
 Import Integral_domain Algebra_syntax.
+Typeclasses Transparent equality eq_notation.
 
 Context {A:Type}`{Aid:Integral_domain A}.
 

@@ -2,7 +2,7 @@ From Stdlib Require Import Arith Morphisms RelationClasses.
 Coercion is_true : bool >-> Sortclass.
 Global Instance: Transitive leb.
 Admitted.
-
+Typeclasses Transparent is_true.
 Goal forall x y z, leb x y -> leb y z -> True.
   intros ??? H H'.
   lazymatch goal with

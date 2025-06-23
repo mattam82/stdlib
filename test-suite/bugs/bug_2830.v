@@ -142,6 +142,10 @@ Class Category (Object:Type) (Hom:Object -> Object -> Type) := {
   ; associativity : forall `(f:a~>b) `(g:b~>c) `(h:c~>d),
     h ∘ (g ∘ f) ≈ (h ∘ g) ∘ f
 }.
+
+Typeclasses Transparent ob.
+Typeclasses Transparent hom.
+
 Notation "a ~> b" := (@hom _ _ _ a b) : category_scope.
 Notation "g ∘ f" := (@comp _ _ _ _ _ _ g f) : category_scope.
 Notation "a ≈ b" := (@eqv _ _ _ _ _ a b) : category_scope.
@@ -194,7 +198,7 @@ Definition skel {A:Type} : relation A := @eq A.
 Admitted.
 
 Import FunctionalExtensionality.
-
+Typeclasses Transparent skel. 
 #[export] Instance set_cat : Category Type (fun A B => A -> B).
 refine {|
   id := fun A => fun x => x
