@@ -231,7 +231,7 @@ Qed.
 Lemma StepFun_P6 :
   forall (f:R -> R) (a b:R), IsStepFun f a b -> IsStepFun f b a.
 Proof.
-  unfold IsStepFun; intros; elim X; intros; apply existT with x;
+  unfold IsStepFun; intros * X; elim X; intros; apply existT with x;
     apply StepFun_P5; assumption.
 Qed.
 
@@ -1550,7 +1550,7 @@ Lemma StepFun_P36 :
     (forall x:R, a < x < b -> f x <= g x) ->
     RiemannInt_SF f <= RiemannInt_SF g.
 Proof.
-  intros; unfold RiemannInt_SF; decide (Rle_dec a b) with H.
+  intros * H X X0 **. unfold RiemannInt_SF; decide (Rle_dec a b) with H.
   replace (Int_SF (subdivision_val f) (subdivision f)) with (Int_SF (FF l f) l).
   - replace (Int_SF (subdivision_val g) (subdivision g)) with (Int_SF (FF l g) l).
     + unfold is_subdivision in X; elim X; clear X; intros;
@@ -2190,8 +2190,8 @@ Lemma StepFun_P44 :
   forall (f:R -> R) (a b c:R),
     IsStepFun f a b -> a <= c <= b -> IsStepFun f a c.
 Proof.
-  intros f; intros; assert (H0 : a <= b).
-  { elim H; intros; apply Rle_trans with c; assumption. }
+  intros f; intros * X H. assert (H0 : a <= b).
+  { elim H; intros. apply Rle_trans with c; assumption. }
   elim H; clear H; intros; unfold IsStepFun in X; unfold is_subdivision in X;
     elim X; clear X; intros l1 [lf1 H2];
     cut
@@ -2302,7 +2302,7 @@ Lemma StepFun_P45 :
   forall (f:R -> R) (a b c:R),
     IsStepFun f a b -> a <= c <= b -> IsStepFun f c b.
 Proof.
-  intros f; intros; assert (H0 : a <= b).
+  intros f; intros * X H; assert (H0 : a <= b).
   { elim H; intros; apply Rle_trans with c; assumption. }
   elim H; clear H; intros; unfold IsStepFun in X; unfold is_subdivision in X;
     elim X; clear X; intros l1 [lf1 H2];
