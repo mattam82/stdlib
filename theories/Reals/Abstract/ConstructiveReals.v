@@ -77,7 +77,7 @@ Definition isLinearOrder {X : Set} (Xlt : X -> X -> Set) : Set
      * (forall x y z : X, Xlt x y -> Xlt y z -> Xlt x z)
      * (forall x y z : X, Xlt x z -> Xlt x y + Xlt y z).
 
-Structure ConstructiveReals : Type :=
+Structure ConstructiveReals : Type@{1} :=
   {
     CRcarrier : Set;
 
@@ -204,6 +204,9 @@ Declare Scope ConstructiveReals.
 
 Delimit Scope ConstructiveReals with ConstructiveReals.
 
+(** We specialize the polymorphic iffT to Set for this theory *)
+#[export] Notation iffT := CRelationClasses.iffT@{0 0}.
+
 Notation "x < y" := (CRlt _ x y) : ConstructiveReals.
 Notation "x <= y" := (CRle _ x y) : ConstructiveReals.
 Notation "x <= y <= z" := (CRle _ x y /\ CRle _ y z) : ConstructiveReals.
@@ -240,7 +243,7 @@ Lemma CRlt_proper
   : forall R : ConstructiveReals,
     CMorphisms.Proper
       (CMorphisms.respectful (CReq R)
-                             (CMorphisms.respectful (CReq R) CRelationClasses.iffT)) (CRlt R).
+                             (CMorphisms.respectful (CReq R) iffT)) (CRlt R).
 Proof.
   intros R x y H x0 y0 H0. destruct H, H0.
   destruct (CRltLinear R). split.
@@ -346,7 +349,7 @@ Qed.
 #[global]
 Instance CRlt_morph
   : forall {R : ConstructiveReals}, CMorphisms.Proper
-      (CMorphisms.respectful (CReq R) (CMorphisms.respectful (CReq R) CRelationClasses.iffT)) (CRlt R).
+      (CMorphisms.respectful (CReq R) (CMorphisms.respectful (CReq R) iffT)) (CRlt R).
 Proof.
   intros R x y H x0 y0 H0. destruct H, H0. split.
   - intro. destruct (CRltLinear R). destruct (s x y x0).
@@ -1219,7 +1222,7 @@ Qed.
 #[global]
 Instance CRapart_morph
   : forall {R : ConstructiveReals}, CMorphisms.Proper
-      (CMorphisms.respectful (CReq R) (CMorphisms.respectful (CReq R) CRelationClasses.iffT)) (CRapart R).
+      (CMorphisms.respectful (CReq R) (CMorphisms.respectful (CReq R) iffT)) (CRapart R).
 Proof.
   intros R x y H x0 y0 H0. destruct H, H0. split.
   - intro. destruct H3.

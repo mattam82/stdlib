@@ -149,10 +149,10 @@ Proof.
   unfold derivable_pt_lim; intros.
   set
     (fn := fun (N:nat) (x:R) => (-1) ^ N / INR (fact (2 * N + 1)) * x ^ (2 * N)).
-  assert (CVN_R fn) by (apply CVN_R_sin; unfold fn; reflexivity).
+  assert (X : CVN_R fn) by (apply CVN_R_sin; unfold fn; reflexivity).
   assert (cv:forall x:R, { l:R | Un_cv (fun N:nat => SP fn N x) l }) by apply (CVN_R_CVS _ X).
   set (r := mkposreal _ Rlt_0_1).
-  assert (CVN_r fn r) by apply (X r).
+  assert (X0 : CVN_r fn r) by apply (X r).
   assert (forall (n:nat) (y:R), Boule 0 r y -> continuity_pt (fn n) y). {
     intros; unfold fn;
       replace (fun x:R => (-1) ^ n / INR (fact (2 * n + 1)) * x ^ (2 * n)) with
