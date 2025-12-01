@@ -53,7 +53,7 @@ Lemma RiemannInt_P1 :
   forall (f:R -> R) (a b:R),
     Riemann_integrable f a b -> Riemann_integrable f b a.
 Proof.
-  unfold Riemann_integrable; intros; elim (X eps); clear X; intros.
+  unfold Riemann_integrable; intros * X *. elim (X eps); clear X; intros.
   elim p; clear p; intros x0 p; exists (mkStepFun (StepFun_P6 (pre x)));
       exists (mkStepFun (StepFun_P6 (pre x0)));
         elim p; clear p; intros; split.
@@ -993,7 +993,7 @@ Lemma RiemannInt_P10 :
     Riemann_integrable g a b ->
     Riemann_integrable (fun x:R => f x + l * g x) a b.
 Proof.
-  unfold Riemann_integrable; intros f g; intros; destruct (Req_dec_T l 0) as [Heq|Hneq].
+  unfold Riemann_integrable; intros f g; intros * X X0 *; destruct (Req_dec_T l 0) as [Heq|Hneq].
   { elim (X eps); intros x p; split with x; elim p; intros x0 p0; split with x0; elim p0;
       intros; split; try assumption; rewrite Heq; intros;
       rewrite Rmult_0_l; rewrite Rplus_0_r; apply H; assumption. }
@@ -1499,7 +1499,7 @@ Lemma RiemannInt_P16 :
   forall (f:R -> R) (a b:R),
     Riemann_integrable f a b -> Riemann_integrable (fun x:R => Rabs (f x)) a b.
 Proof.
-  unfold Riemann_integrable; intro f; intros; elim (X eps); clear X;
+  unfold Riemann_integrable; intro f; intros a b X eps; elim (X eps); clear X;
     intros phi [psi [H H0]]; split with (mkStepFun (StepFun_P32 phi));
       split with psi; split; try assumption; intros; simpl;
         apply Rle_trans with (Rabs (f t - phi t));
@@ -1628,7 +1628,7 @@ Proof.
              end
          end).
   cut (forall N:nat, IsStepFun (phi2_aux N) a b).
-  { intro; set (phi2_m := fun N:nat => mkStepFun (X N)).
+  { intro X; set (phi2_m := fun N:nat => mkStepFun (X N)).
     assert
       (H2 :
         exists psi2 : nat -> StepFun a b,
@@ -1825,9 +1825,9 @@ Proof.
          | right _ => 0
          end).
   cut (IsStepFun phi3 a c).
-  1:intro; cut (IsStepFun psi3 a b).
-  1:intro; cut (IsStepFun psi3 b c).
-  1:intro; assert (IsStepFun psi3 a c) by (apply StepFun_P46 with b; assumption).
+  1:intro X; cut (IsStepFun psi3 a b).
+  1:intro X0; cut (IsStepFun psi3 b c).
+  1:intro X1; assert (X2 : IsStepFun psi3 a c) by (apply StepFun_P46 with b; assumption).
   - split with (mkStepFun X); split with (mkStepFun X2); simpl;
       split.
     + intros; unfold phi3, psi3; case (Rle_dec t b) as [|Hnle]; case (Rle_dec a t) as [|Hnle'].
@@ -1992,7 +1992,7 @@ Lemma RiemannInt_P22 :
   forall (f:R -> R) (a b c:R),
     Riemann_integrable f a b -> a <= c <= b -> Riemann_integrable f a c.
 Proof.
-  unfold Riemann_integrable; intros; elim (X eps); clear X;
+  unfold Riemann_integrable; intros * X **; elim (X eps); clear X;
     intros phi [psi H0]; elim H; elim H0; clear H H0;
     intros; assert (H3 : IsStepFun phi a c).
   { apply StepFun_P44 with b.
@@ -2063,7 +2063,7 @@ Lemma RiemannInt_P23 :
   forall (f:R -> R) (a b c:R),
     Riemann_integrable f a b -> a <= c <= b -> Riemann_integrable f c b.
 Proof.
-  unfold Riemann_integrable; intros; elim (X eps); clear X;
+  unfold Riemann_integrable. intros * X **; elim (X eps); clear X;
     intros phi [psi H0]; elim H; elim H0; clear H H0;
     intros; assert (H3 : IsStepFun phi c b).
   { apply StepFun_P45 with a.
