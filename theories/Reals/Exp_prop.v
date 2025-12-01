@@ -548,7 +548,7 @@ Proof.
   unfold derivable_pt_lim; intros.
   set (fn := fun (N:nat) (x:R) => x ^ N / INR (fact (S N))).
   cut (CVN_R fn).
-  - intro; assert (cv:forall x:R, { l:R | Un_cv (fun N:nat => SP fn N x) l }) by apply (CVN_R_CVS _ X).
+  - intro X; assert (cv:forall x:R, { l:R | Un_cv (fun N:nat => SP fn N x) l }) by apply (CVN_R_CVS _ X).
     assert (forall n:nat, continuity (fn n)). {
       intro; unfold fn.
       replace (fun x:R => x ^ n / INR (fact (S n))) with
