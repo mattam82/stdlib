@@ -152,11 +152,11 @@ Lemma CVN_CVU :
     (cv:forall x:R, {l:R | Un_cv (fun N:nat => SP fn N x) l })
     (r:posreal), CVN_r fn r -> CVU (fun n:nat => SP fn n) (SFL fn cv) 0 r.
 Proof.
-  intros; unfold CVU; intros.
+  intros * X; unfold CVU; intros.
   unfold CVN_r in X.
   elim X; intros An X0.
   elim X0; intros s H0.
-  elim H0; intros.
+  elim H0; intros H1 H2.
   assert (Un_cv (fun n:nat => sum_f_R0 (fun k:nat => Rabs (An k)) n - s) 0). {
     unfold Un_cv in H1; unfold Un_cv; intros.
     elim (H1 _ H3); intros.
@@ -296,7 +296,7 @@ Lemma SFL_continuity_pt :
     (forall (n:nat) (y:R), Boule 0 r y -> continuity_pt (fn n) y) ->
     forall y:R, Boule 0 r y -> continuity_pt (SFL fn cv) y.
 Proof.
-  intros; eapply CVU_continuity.
+  intros * X **; eapply CVU_continuity.
   - apply CVN_CVU.
     apply X.
   - intros; unfold SP; apply continuity_pt_finite_SF.
@@ -310,7 +310,7 @@ Lemma SFL_continuity :
     (cv:forall x:R, { l:R | Un_cv (fun N:nat => SP fn N x) l }),
     CVN_R fn -> (forall n:nat, continuity (fn n)) -> continuity (SFL fn cv).
 Proof.
-  intros; unfold continuity; intro.
+  intros * X **; unfold continuity; intro.
   cut (0 < Rabs x + 1);
     [ intro | apply Rplus_le_lt_0_compat; [ apply Rabs_pos | apply Rlt_0_1 ] ].
   cut (Boule 0 (mkposreal _ H0) x).
@@ -328,7 +328,7 @@ Lemma CVN_R_CVS :
   forall fn:nat -> R -> R,
     CVN_R fn -> forall x:R, { l:R | Un_cv (fun N:nat => SP fn N x) l }.
 Proof.
-  intros; apply R_complete.
+  intros * X **; apply R_complete.
   unfold SP; set (An := fun N:nat => fn N x).
   change (Cauchy_crit_series An).
   apply cauchy_abs.

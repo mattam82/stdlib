@@ -456,7 +456,7 @@ Lemma NewtonInt_P8 :
     Newton_integrable f a b ->
     Newton_integrable f b c -> Newton_integrable f a c.
 Proof.
-intros.
+intros f a b c X X0.
 elim X; intros F0 H0.
 elim X0; intros F1 H1.
 destruct (total_order_T a b) as [[Hlt|Heq]|Hgt].
