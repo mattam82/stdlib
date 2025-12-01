@@ -124,7 +124,7 @@ Lemma continuity_cos : continuity cos.
 Proof.
   set (fn := fun (N:nat) (x:R) => (-1) ^ N / INR (fact (2 * N)) * x ^ (2 * N)).
   cut (CVN_R fn).
-  1:intro; cut (forall x:R, { l:R | Un_cv (fun N:nat => SP fn N x) l }).
+  1:intro X; cut (forall x:R, { l:R | Un_cv (fun N:nat => SP fn N x) l }).
   1:intro cv; cut (forall n:nat, continuity (fn n)).
   1:intro; cut (forall x:R, cos x = SFL fn cv x).
   1:intro; cut (continuity (SFL fn cv) -> continuity cos).
