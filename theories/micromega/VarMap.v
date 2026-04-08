@@ -18,7 +18,7 @@
 From Stdlib Require Import BinInt.
 From Stdlib Require Import List.
 Set Implicit Arguments.
-
+Unset Universe Polymorphism.
 (*
  * This adds a Leaf constructor to the varmap data structure (plugins/quote/Quote.v)
  * --- it is harmless and spares a lot of Empty.

@@ -19,6 +19,7 @@ From Stdlib Require Import Refl.
 From Stdlib Require Import Bool.
 From Stdlib Require Import Relation_Definitions Setoid.
 
+Unset Universe Polymorphism.
 Set Implicit Arguments.
 
 (** Formulae are either interpreted over Prop or bool. *)

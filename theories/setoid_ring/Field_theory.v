@@ -12,7 +12,7 @@ From Corelib Require Import RelationClasses Setoid Morphisms.
 From Stdlib Require Import BinNat BinInt.
 From Stdlib.setoid_ring Require Import Ring_base Ring_polynom Ring_tac Ring_theory InitialRing.
 Set Implicit Arguments.
-
+Unset Universe Polymorphism.
 Section MakeFieldPol.
 
 (* Field elements : R *)

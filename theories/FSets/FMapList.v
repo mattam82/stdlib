@@ -19,6 +19,8 @@ From Stdlib Require Import FMapInterface.
 Set Implicit Arguments.
 Unset Strict Implicit.
 
+Unset Universe Polymorphism.
+
 Module Raw (X:OrderedType).
 
 Module Import MX := OrderedTypeFacts X.

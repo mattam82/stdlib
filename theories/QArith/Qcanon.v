@@ -532,7 +532,7 @@ Proof.
   - reflexivity.
   - exact Qcmult_inv_l.
 Qed.
-
+Set Debug "backtrace".
 Add Field Qcfield : Qcft.
 
 (** A field tactic for rational numbers *)

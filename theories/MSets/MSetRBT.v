@@ -42,6 +42,8 @@ From Stdlib Require Import Bool List BinPos Pnat Setoid SetoidList PeanoNat.
 
 Create Rewrite HintDb rb.
 
+Unset Universe Polymorphism.
+
 (** An extra function not (yet?) in MSetInterface.S *)
 
 Module Type MSetRemoveMin (Import M:MSetInterface.S).

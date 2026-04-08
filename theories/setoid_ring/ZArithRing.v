@@ -10,7 +10,7 @@
 
 From Stdlib Require Import BinInt.
 From Stdlib.setoid_ring Require Export Ring.
-
+Unset Universe Polymorphism.
 Import InitialRing.
 
 Set Implicit Arguments.
@@ -63,5 +63,5 @@ Add Ring Zr : Zth
    power_tac Zpower_theory [Zpow_tac],
     (* The following two options are not needed; they are the default choice
        when the set of coefficient is the usual ring Z *)
-    div (InitialRing.Ztriv_div_th (@Eqsth Z) (@IDphi Z)),
+    div (InitialRing.Ztriv_div_th (@Eqsth@{0} Z) (@IDphi@{0} Z)),
    sign get_signZ_th).

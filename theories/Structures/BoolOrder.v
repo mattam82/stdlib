@@ -15,6 +15,9 @@
 From Stdlib Require Export Bool.
 From Stdlib Require Import Orders.
 Import BoolNotations.
+
+Unset Universe Polymorphism.
+
 #[local] Ltac Tauto.intuition_solver ::= auto with typeclass_instances relations.
 
 (** * Order [le] *)
@@ -86,7 +89,7 @@ Qed.
 
 (* Module structure *)
 Module BoolOrd <: UsualDecidableTypeFull <: OrderedTypeFull <: TotalOrder.
-  Definition t := bool.
+  Monomorphic Definition t := bool.
   Definition eq := @eq bool.
   Definition eq_equiv := @eq_equivalence bool.
   Definition lt := Bool.lt.

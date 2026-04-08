@@ -33,6 +33,7 @@ From Stdlib Require Export Bool SetoidList RelationClasses Morphisms
  RelationPairs Equalities Orders OrdersFacts.
 Set Implicit Arguments.
 Unset Strict Implicit.
+Unset Universe Polymorphism.
 
 Module Type TypElt.
  Parameters t elt : Type.

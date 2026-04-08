@@ -38,6 +38,7 @@ From Stdlib Require Arith. (* contains deprecated dependencies *)
    only when needed *)
 #[local] Unset Elimination Schemes.
 
+Unset Universe Polymorphism.
 Module Type InfoTyp.
  Parameter t : Set.
 End InfoTyp.

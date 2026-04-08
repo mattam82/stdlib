@@ -16,7 +16,7 @@ From Stdlib Require Import Ring_polynom.
 Import List.
 
 Set Implicit Arguments.
-(* Set Universe Polymorphism. *)
+Unset Universe Polymorphism.
 
 Import RingSyntax.
 

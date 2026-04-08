@@ -14,6 +14,8 @@ From Stdlib Require Import PeanoNat Peano_dec Compare_dec.
 From Stdlib Require Import Ascii String.
 From Stdlib Require Import NArith Ndec.
 
+Unset Universe Polymorphism.
+
 (** * Examples of Ordered Type structures. *)
 
 (** First, a particular case of [OrderedType] where

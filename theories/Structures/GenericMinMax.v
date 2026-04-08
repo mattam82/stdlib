@@ -10,6 +10,8 @@
 
 From Stdlib Require Import Orders OrdersTac OrdersFacts Setoid Morphisms Basics.
 
+Unset Universe Polymorphism.
+
 (** * A Generic construction of min and max *)
 
 (** ** First, an interface for types with [max] and/or [min] *)

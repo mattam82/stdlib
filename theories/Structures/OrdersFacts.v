@@ -11,6 +11,7 @@
 From Stdlib Require Import Bool Basics OrdersTac.
 From Stdlib Require Export Orders.
 
+Unset Universe Polymorphism.
 Set Implicit Arguments.
 Unset Strict Implicit.
 

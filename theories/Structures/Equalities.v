@@ -14,6 +14,8 @@ From Stdlib Require Import Bool Morphisms Setoid.
 Set Implicit Arguments.
 Unset Strict Implicit.
 
+Unset Universe Polymorphism.
+
 (** Structure with nothing inside.
     Used to force a module type T into a module via Nop <+ T. (HACK!) *)
 
