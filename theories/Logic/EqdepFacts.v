@@ -54,8 +54,6 @@ Table of contents:
 
 Import EqNotations.
 
-(* Set Universe Polymorphism. *)
-
 Section Dependent_Equality.
 
   Variable U : Type.
@@ -85,9 +83,9 @@ Section Dependent_Equality.
   Proof.
     destruct 1; auto.
   Qed.
-
+  
   Scheme eq_indd := Induction for eq Sort Prop.
-
+  
   (** Equivalent definition of dependent equality as a dependent pair of
       equalities *)
 
