@@ -20,6 +20,8 @@
 
 From Stdlib Require Import Bool PeanoNat BinPos Orders OrdersEx MSetInterface.
 
+Unset Universe Polymorphism.
+
 Set Implicit Arguments.
 #[local] Open Scope lazy_bool_scope.
 #[local] Open Scope positive_scope.

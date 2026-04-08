@@ -19,6 +19,7 @@ From Stdlib Require Import Wf_Z.
 #[local] Open Scope R_scope.
 
 Set Implicit Arguments.
+Unset Universe Polymorphism.
 
 (*****************************************************)
 (** * Each bounded subset of N has a maximal element *)
@@ -1048,7 +1049,7 @@ Proof.
       { elim H14; clear H14; intros; unfold I in H14; elim H14; clear H14; intros;
         apply Nat.succ_lt_mono; replace (S (pred (length lf))) with (length lf).
         { inversion H18.
-          2: apply -> Nat.succ_lt_mono; assumption.
+          2: rewrite <- H19; apply -> Nat.succ_lt_mono; assumption.
           assert (x0 = pred (length lf)). {
             rewrite <- H20; reflexivity.
           }
@@ -1250,7 +1251,7 @@ Proof.
     set
       (I :=
          fun j:nat =>
-           pos_Rl lg j <= pos_Rl (cons_ORlist lf lg) i /\ (j < length lg)%nat);
+           pos_Rl lg j <= pos_Rl (cons_ORlist lf lg) i /\ (j < length@{0} lg)%nat);
       assert (H12 : Nbound I).
     { unfold Nbound; exists (length lg); intros; unfold I in H12; elim H12;
         intros; apply Nat.lt_le_incl; assumption. }
@@ -1272,7 +1273,7 @@ Proof.
       exists (pos_Rl lg0 x0); unfold constant_D_eq, open_interval;
       intros; assert (H16 := H4 x0); assert (H17 : (x0 < pred (length lg))%nat).
     { elim H14; clear H14; intros; unfold I in H14; elim H14; clear H14; intros;
-        apply Nat.succ_lt_mono; replace (S (pred (length lg))) with (length lg).
+        apply Nat.succ_lt_mono; replace (S (pred (length lg))) with (length@{0} lg).
       { inversion H18.
         2: apply -> Nat.succ_lt_mono; assumption.
         cut (x0 = pred (length lg)).

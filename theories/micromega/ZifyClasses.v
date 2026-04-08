@@ -15,7 +15,7 @@
     Another limitation is that our injection theorems e.g. [TBOpInj],
     are using Leibniz equality; the payoff is that there is no need for morphisms...
  *)
-
+Unset Universe Polymorphism.
 (** An injection [InjTyp S T] declares an injection
     from source type S to target type T.
 *)

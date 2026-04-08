@@ -18,7 +18,7 @@
     [equal s s'=true] instead of [Equal s s'], etc. *)
 
 From Stdlib Require Import FSetProperties Zerob Sumbool DecidableTypeEx.
-
+Unset Universe Polymorphism.
 Module WEqProperties_fun (Import E:DecidableType)(M:WSfun E).
 Module Import MP := WProperties_fun E M.
 Import FM Dec.F.

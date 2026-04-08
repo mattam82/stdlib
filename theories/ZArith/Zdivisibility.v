@@ -205,7 +205,7 @@ Let f := S(S(Z.to_nat(Z.log2_up(Z.log2_up(Z.abs(a*b)))))). (* log2(fuel) *)
       Z.gcd r1 r2 = Z.gcd a b)
    -> { '(u, v, d) | True -> u * a + v * b = d /\ d = Z.gcd a b}.
 Proof.
-  refine (Fix (Acc_intro_generator f (Z.lt_wf 0)) _ (fun r1 rec u1 v1  r2 u2 v2 H =>
+  refine (Fix@{0 0} (Acc_intro_generator f (Z.lt_wf 0)) _ (fun r1 rec u1 v1  r2 u2 v2 H =>
     if Z.eq_dec r1 0
     then exist (fun '(u, v, d) => _) (u2, v2, r2) (fun _ => _)
     else let q := r2 / r1 in

@@ -16,7 +16,7 @@
 From Stdlib Require Export MSetInterface OrdersFacts OrdersLists.
 Set Implicit Arguments.
 Unset Strict Implicit.
-
+Unset Universe Polymorphism.
 (** * Functions over lists
 
    First, we provide sets as lists which are not necessarily sorted.

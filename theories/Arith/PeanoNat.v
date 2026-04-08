@@ -86,7 +86,7 @@ Qed.
 (** NB: Aliasing [le] is mandatory, since only a Definition can implement
     an interface Parameter... *)
 
-Definition eq := @Logic.eq nat.
+Monomorphic Definition eq := @Logic.eq nat.
 Definition le := Peano.le.
 Definition lt := Peano.lt.
 

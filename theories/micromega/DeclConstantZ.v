@@ -25,7 +25,7 @@
  *)
 
 From Stdlib Require Import List.
-
+Unset Universe Polymorphism.
 (**  Declarative definition of constants.
      These are ground terms (without variables) of interest.
      e.g. nat is built from O and S

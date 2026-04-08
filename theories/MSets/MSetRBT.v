@@ -39,7 +39,7 @@ From Stdlib Require Import Bool List BinPos Pnat Setoid SetoidList PeanoNat.
 (* For nicer extraction, we create induction principles
    only when needed *)
 #[local] Unset Elimination Schemes.
-
+Unset Universe Polymorphism.
 (** An extra function not (yet?) in MSetInterface.S *)
 
 Module Type MSetRemoveMin (Import M:MSetInterface.S).

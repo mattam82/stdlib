@@ -26,7 +26,7 @@ From Stdlib Require Import Refl.
 From Stdlib.micromega Require Tauto.
 
 Set Implicit Arguments.
-
+Unset Universe Polymorphism.
 Import OrderedRingSyntax.
 
 Section Micromega.

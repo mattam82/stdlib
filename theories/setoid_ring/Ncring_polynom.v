@@ -21,6 +21,9 @@ From Stdlib Require Export Ncring.
 
 #[local] Create HintDb rsimpl.
 
+#[universes(template)]
+Class Equalityb (A : Type):= {equalityb : A -> A -> bool}.
+
 Section MakeRingPol.
 
 Context (C R:Type) `{Rh:Ring_morphism C R}.
@@ -54,8 +57,6 @@ Definition P0 := Pc 0.
 Definition P1 := Pc 1.
 
 Variable Ceqb:C->C->bool.
-#[universes(template)]
-Class Equalityb (A : Type):= {equalityb : A -> A -> bool}.
 Notation "x =? y" := (equalityb x y) (at level 70, no associativity).
 Variable Ceqb_eq: forall x y:C, Ceqb x y = true -> (x == y).
 

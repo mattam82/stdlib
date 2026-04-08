@@ -15,6 +15,7 @@ From Stdlib Require Import OrderedType.
 (** NB: [comparison], defined in [Datatypes.v] is [Eq|Lt|Gt]
 whereas [compare], defined in [OrderedType.v] is [EQ _ | LT _ | GT _ ]
 *)
+Unset Universe Polymorphism.
 
 Module Type OrderedTypeAlt.
 

@@ -9,6 +9,9 @@
 (************************************************************************)
 
 From Stdlib Require Export SetoidList Morphisms OrdersTac.
+
+Unset Universe Polymorphism.
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 
@@ -17,6 +20,7 @@ Unset Strict Implicit.
 
 (** * Ordered types *)
 
+#[universes(template)]
 Inductive Compare (X : Type) (lt eq : X -> X -> Prop) (x y : X) : Type :=
   | LT : lt x y -> Compare lt eq x y
   | EQ : eq x y -> Compare lt eq x y

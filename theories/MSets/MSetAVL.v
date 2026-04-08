@@ -37,10 +37,12 @@ From Stdlib Require Import MSetInterface MSetGenTree BinInt Int.
 
 Set Implicit Arguments.
 Unset Strict Implicit.
+
 (* for nicer extraction, we create inductive principles
    only when needed *)
 #[local] Unset Elimination Schemes.
 
+Unset Universe Polymorphism.
 (** * Ops : the pure functions *)
 
 Module Ops (Import I:Int)(X:OrderedType) <: MSetInterface.Ops X.

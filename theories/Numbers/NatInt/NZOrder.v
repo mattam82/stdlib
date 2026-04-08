@@ -181,6 +181,7 @@ Definition le_lteq := lt_eq_cases.
 
 Module Private_OrderTac.
 Module IsTotal.
+ Unset Universe Polymorphism.
  Definition eq_equiv := eq_equiv.
  Definition lt_strorder := lt_strorder.
  Definition lt_compat := lt_compat.

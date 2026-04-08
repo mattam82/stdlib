@@ -18,6 +18,8 @@ From Stdlib Require Import FMapInterface.
 Set Implicit Arguments.
 Unset Strict Implicit.
 
+Unset Universe Polymorphism.
+
 Module Raw (X:DecidableType).
 
 Module Import PX := KeyDecidableType X.
