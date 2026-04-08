@@ -287,7 +287,7 @@ End DecidableEqDep.
 
 Module Type DecidableSet.
 
-  Parameter U:Set.
+  Monomorphic Parameter U:Set.
   Axiom eq_dec : forall x y:U, {x = y} + {x <> y}.
 
 End DecidableSet.
