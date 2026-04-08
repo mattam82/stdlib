@@ -9,6 +9,8 @@
 (************************************************************************)
 
 From Stdlib Require Import Setoid Morphisms Basics Equalities Orders.
+
+Unset Universe Polymorphism.
 Set Implicit Arguments.
 
 (** * The order tactic *)

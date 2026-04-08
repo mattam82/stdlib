@@ -12,6 +12,8 @@ From Stdlib Require Export Relations Morphisms Setoid Equalities.
 Set Implicit Arguments.
 Unset Strict Implicit.
 
+Unset Universe Polymorphism.
+
 (** * Ordered types *)
 
 (** First, signatures with only the order relations *)

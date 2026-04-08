@@ -15,7 +15,7 @@
 
 From Stdlib Require Import OrderedType Orders.
 Set Implicit Arguments.
-
+Unset Universe Polymorphism.
 (** * Some alternative (but equivalent) presentations for an Ordered Type
    inferface. *)
 

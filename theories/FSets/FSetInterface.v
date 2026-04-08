@@ -31,7 +31,7 @@
 From Stdlib Require Export Bool OrderedType DecidableType.
 Set Implicit Arguments.
 Unset Strict Implicit.
-
+Unset Universe Polymorphism.
 (** * Non-dependent signatures
 
     The following signatures presents sets as purely informative

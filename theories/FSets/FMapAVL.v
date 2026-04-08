@@ -22,6 +22,7 @@ From Stdlib Require Import FMapInterface FMapList ZArith Int.
 
 Set Implicit Arguments.
 Unset Strict Implicit.
+Unset Universe Polymorphism.
 
 (** Notations and helper lemma about pairs *)
 

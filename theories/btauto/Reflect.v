@@ -1,5 +1,7 @@
 From Stdlib Require Import Bool DecidableClass Algebra Ring PArith Lia.
 
+Unset Universe Polymorphism.
+
 Section Bool.
 
 (* Boolean formulas and their evaluations *)
@@ -64,7 +66,7 @@ Lemma poly_of_formula_eval_compat : forall var f,
 Proof.
 intros var f; induction f; simpl poly_of_formula; simpl formula_eval; auto.
 - now simpl; match goal with [ |- ?t = ?u ] => destruct u; reflexivity end.
-- rewrite poly_mul_compat, IHf1, IHf2; ring.
+- rewrite poly_mul_compat, IHf1, IHf2; ring. 
 - repeat rewrite poly_add_compat.
   rewrite poly_mul_compat; try_rewrite.
   now match goal with [ |- ?t = ?x || ?y ] => destruct x; destruct y; reflexivity end.
@@ -141,13 +143,13 @@ rewrite <- (reduce_eval_compat nr (poly_of_formula fr)); auto.
 rewrite Heq; reflexivity.
 Qed.
 
-Definition make_last {A} n (x def : A) :=
+#[universes(polymorphic)] Definition make_last {A} n (x def : A) :=
   Pos.peano_rect (fun _ => list A)
     (cons x nil)
     (fun _ F => cons def F) n.
 
 (* Replace the nth element of a list *)
-
+#[universes(polymorphic)]
 Fixpoint list_replace l n b :=
 match l with
 | nil => make_last n b false
@@ -172,6 +174,7 @@ match p with
     list_replace var i false
 end.
 
+Set Universe Polymorphism.
 Lemma list_nth_base : forall A (def : A) l,
   list_nth 1 l def = match l with nil => def | cons x _ => x end.
 Proof.
@@ -195,7 +198,7 @@ intros A n def; induction n using Pos.peano_rect.
 + rewrite list_nth_succ; reflexivity.
 Qed.
 
-Lemma make_last_nth_1 : forall A n i x def, i <> n ->
+Lemma make_last_nth_1@{u} : forall {A : Type@{u}} n i x def, i <> n ->
   list_nth i (@make_last A n x def) def = def.
 Proof.
 intros A n; induction n using Pos.peano_rect; intros i x def Hd;
@@ -213,14 +216,14 @@ Proof.
 intros A n; induction n using Pos.peano_rect; intros x def; simpl.
 + reflexivity.
 + unfold make_last; rewrite Pos.peano_rect_succ; fold (make_last n x def).
-  rewrite list_nth_succ; auto.
+  rewrite list_nth_succ; auto. apply IHn.
 Qed.
 
 Lemma list_replace_nth_1 : forall var i j x, i <> j ->
   list_nth i (list_replace var j x) false = list_nth i var false.
 Proof.
 intros var; induction var; intros i j x Hd; simpl.
-+ rewrite make_last_nth_1, list_nth_nil; auto.
++rewrite make_last_nth_1, list_nth_nil; auto.
 + induction j using Pos.peano_rect.
   - rewrite Pos.peano_rect_base.
     induction i using Pos.peano_rect; [now elim Hd; auto|].
@@ -239,7 +242,7 @@ intros var; induction var; intros i x; simpl.
   - rewrite Pos.peano_rect_base, list_nth_base; reflexivity.
   - rewrite Pos.peano_rect_succ, list_nth_succ; auto.
 Qed.
-
+Unset Universe Polymorphism.
 (* The witness is correct only if the polynomial is linear *)
 
 Lemma boolean_witness_nonzero : forall k p, linear k p -> ~ null p ->

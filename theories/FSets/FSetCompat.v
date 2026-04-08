@@ -13,7 +13,7 @@
 From Stdlib Require Import FSetInterface FSetFacts MSetInterface MSetFacts.
 Set Implicit Arguments.
 Unset Strict Implicit.
-
+Unset Universe Polymorphism.
 #[local] Ltac Tauto.intuition_solver ::= auto with relations.
 
 (** * From new Weak Sets to old ones *)

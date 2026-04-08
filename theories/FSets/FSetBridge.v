@@ -18,6 +18,8 @@ Set Implicit Arguments.
 Unset Strict Implicit.
 Set Firstorder Depth 2.
 
+Unset Universe Polymorphism.
+
 (** * From non-dependent signature [S] to dependent signature [Sdep]. *)
 
 Module DepOfNodep (Import M: S) <: Sdep with Module E := M.E.

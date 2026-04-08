@@ -11,7 +11,7 @@
 (** * FMapPositive : an implementation of FMapInterface for [positive] keys. *)
 
 From Stdlib Require Import Bool OrderedType ZArith OrderedType OrderedTypeEx FMapInterface.
-
+Unset Universe Polymorphism.
 Set Implicit Arguments.
 #[local] Open Scope positive_scope.
 #[local] Unset Elimination Schemes.

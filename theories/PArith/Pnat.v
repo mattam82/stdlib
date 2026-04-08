@@ -209,7 +209,7 @@ Theorem inj_pow p q : to_nat (p ^ q) = to_nat p ^ to_nat q.
 Proof.
  induction q as [|q IHq] using peano_ind.
  - now rewrite Pos.pow_1_r, inj_1, Nat.pow_1_r.
- - unfold Pos.pow. rewrite inj_succ, iter_succ, inj_mul. fold (Pos.pow p q).
+ - unfold Pos.pow. rewrite inj_succ, iter_succ, inj_mul. change (iter (mul p) 1%positive q) with (Pos.pow p q).
    now rewrite IHq.
 Qed.
 

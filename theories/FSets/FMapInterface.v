@@ -15,6 +15,7 @@
 From Stdlib Require Export Bool DecidableType OrderedType.
 Set Implicit Arguments.
 Unset Strict Implicit.
+Unset Universe Polymorphism.
 
 (** When compared with Ocaml Map, this signature has been split in
     several parts :

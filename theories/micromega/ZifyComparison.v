@@ -12,7 +12,7 @@ From Stdlib Require Import Bool BinInt.
 From Stdlib Require Import Zify ZifyClasses.
 From Stdlib Require Import Lia.
 #[local] Open Scope Z_scope.
-
+Unset Universe Polymorphism.
 (** [Z_of_comparison] is the injection function for comparison *)
 Definition Z_of_comparison (c : comparison) : Z :=
   match c with

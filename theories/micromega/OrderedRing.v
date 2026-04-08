@@ -13,6 +13,7 @@
 From Stdlib Require Import Setoid.
 From Stdlib Require Import Ring.
 
+Unset Universe Polymorphism.
 (** Generic properties of ordered rings on a setoid equality *)
 
 Set Implicit Arguments.
@@ -113,7 +114,7 @@ Add Morphism rlt with signature req ==> req ==> iff as rlt_morph.
 Proof.
 exact (SORlt_wd sor).
 Qed.
-
+Set Debug "backtrace".
 Add Ring SOR : (SORrt sor).
 
 Add Morphism rminus with signature req ==> req ==> req as rminus_morph.
