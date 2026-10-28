@@ -329,6 +329,7 @@ assert (forall n, Proper (Z.eq==>iff) (Z.lt n)).
   rewrite Hm. rewrite 2 lt_nge, 2 lt_eq_cases, Hn; auto with *.
 Qed.
 
+Universe Definition ut := N.ut.
 Definition t := Z.t.
 Definition eq := Z.eq.
 Definition zero := Z.zero.

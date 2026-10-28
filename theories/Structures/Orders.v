@@ -278,6 +278,7 @@ Module OTF_to_TTLB (Import O : OrderedTypeFull') <: TotalTransitiveLeBool.
  - right; transitivity y; auto.
  Qed.
 
+ Universe Definition ut := ut.
  Definition t := t.
 
 End OTF_to_TTLB.
@@ -294,6 +295,7 @@ End OTF_to_TTLB.
 
 Module TTLB_to_OTF (Import O : TotalTransitiveLeBool') <: OrderedTypeFull.
 
+ Universe Definition ut := ut.
  Definition t := t.
 
  Definition le x y : Prop := x <=? y.

@@ -245,6 +245,7 @@ End OrderedTypeTest.
 
 Module OrderedTypeRev (O:OrderedTypeFull) <: OrderedTypeFull.
 
+Universe Definition ut := O.ut.
 Definition t := O.t.
 Definition eq := O.eq.
 #[global]

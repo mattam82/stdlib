@@ -75,7 +75,8 @@ Module Ops (X:Orders.OrderedType) <: MSetInterface.Ops X.
     provided by this generic functor. *)
 
 Include MSetGenTree.Ops X Color.
-
+Universe Definition ut := X.ut.
+Universe Definition uelt := X.ut.
 Definition t := tree.
 #[local] Abbreviation Rd := (Node Red).
 #[local] Abbreviation Bk := (Node Black).

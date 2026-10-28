@@ -16,6 +16,7 @@ From Stdlib Require Import FSets.
 From Stdlib Require Import FSetWeakList.
 
 Module DecidableNat.
+Universe Definition ut := Set.
 Definition t := nat.
 Definition eq := @eq nat.
 Definition eq_refl := @refl_equal nat.

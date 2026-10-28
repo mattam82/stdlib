@@ -48,7 +48,8 @@ Module Z_as_DT <: UsualDecidableType := Z_as_OT.
    over their cartesian product. *)
 
 Module PairDecidableType(D1 D2:DecidableType) <: DecidableType.
-
+ Universe pairu. Constraint D1.ut <= pairu. Constraint D2.ut <= pairu.
+ Universe Definition ut := pairu.
  Definition t := prod D1.t D2.t.
 
  Definition eq x y := D1.eq (fst x) (fst y) /\ D2.eq (snd x) (snd y).
@@ -79,6 +80,8 @@ End PairDecidableType.
 (** Similarly for pairs of UsualDecidableType *)
 
 Module PairUsualDecidableType(D1 D2:UsualDecidableType) <: UsualDecidableType.
+ Universe pairu. Constraint D1.ut <= pairu. Constraint D2.ut <= pairu.
+ Universe Definition ut := pairu.
  Definition t := prod D1.t D2.t.
  Definition eq := @eq t.
  Definition eq_refl := @eq_refl t.

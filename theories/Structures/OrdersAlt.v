@@ -26,8 +26,8 @@ Module Type OrderedTypeOrig := OrderedType.OrderedType.
 (** ** An interface based on compare *)
 
 Module Type OrderedTypeAlt.
-
- Parameter t : Type.
+ Universe Parameter ut.
+ Parameter t : Type@{ut}.
 
  Parameter compare : t -> t -> comparison.
 
@@ -114,7 +114,7 @@ End Backport_OT.
 (** ** From OrderedTypeAlt to OrderedType. *)
 
 Module OT_from_Alt (Import O:OrderedTypeAlt) <: OrderedType.
-
+ Universe Definition ut := ut.
  Definition t := t.
 
  Definition eq x y := (x?=y) = Eq.
@@ -193,7 +193,8 @@ End OT_from_Alt.
 (** From the original presentation to this alternative one. *)
 
 Module OT_to_Alt (Import O:OrderedType) <: OrderedTypeAlt.
-
+ 
+ Universe Definition ut := ut.
  Definition t := t.
  Definition compare := compare.
 

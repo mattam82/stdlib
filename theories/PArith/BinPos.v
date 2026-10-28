@@ -40,6 +40,7 @@ Module Pos
 
 Include BinPosDef.Pos.
 
+Universe Definition ut := Set.
 (** In functor applications that follow, we only inline t and eq *)
 
 Set Inline Level 30.

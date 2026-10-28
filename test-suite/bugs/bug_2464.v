@@ -5,6 +5,7 @@ Parameter Name : Set.
 Axiom eq_Name_dec : forall (n : Name) (o : Name), {n = o} + {n <> o}.
 
 Module DecidableName.
+Universe Definition ut := Set.
 Definition t := Name.
 Definition eq := @eq Name.
 Definition eq_refl := @refl_equal Name.

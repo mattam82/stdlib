@@ -35,7 +35,9 @@ Set Implicit Arguments.
 Unset Strict Implicit.
 
 Module Type TypElt.
- Parameters t elt : Type.
+ Universe Parameters uelt ut. 
+ Parameter t : Type@{ut}.
+ Parameter elt : Type@{uelt}. 
 End TypElt.
 
 Module Type HasWOps (Import T:TypElt).
@@ -115,8 +117,10 @@ Module Type HasWOps (Import T:TypElt).
 End HasWOps.
 
 Module Type WOps (E : DecidableType).
+  Universe Definition uelt := E.ut.
+  Universe Parameter ut.
   Definition elt := E.t.
-  Parameter t : Type. (** the abstract type of sets *)
+  Parameter t : Type@{ut}. (** the abstract type of sets *)
   Include HasWOps.
 End WOps.
 
@@ -451,9 +455,11 @@ Module WRaw2SetsOn (E:DecidableType)(M:WRawSets E) <: WSetsOn E.
  (** We avoid creating induction principles for the Record *)
  #[local] Unset Elimination Schemes.
 
+ Universe Definition uelt := E.ut.
  Definition elt := E.t.
 
  Record t_ := Mkt {this :> M.t; is_ok : M.Ok this}.
+ Universe Definition ut := M.ut.
  Definition t := t_.
  Arguments Mkt this {is_ok}.
  #[global]

@@ -99,6 +99,7 @@ End PairOrderedType.
 #[local] Open Scope positive.
 
 Module PositiveOrderedTypeBits <: UsualOrderedType.
+  Universe Definition ut := Set.
   Definition t:=positive.
   Include HasUsualEq <+ UsualIsEq.
   Definition eqb := Pos.eqb.
@@ -162,6 +163,7 @@ Module PositiveOrderedTypeBits <: UsualOrderedType.
 End PositiveOrderedTypeBits.
 
 Module Ascii_as_OT <: UsualOrderedType.
+  Universe Definition ut := Set.
   Definition t := ascii.
   Include HasUsualEq <+ UsualIsEq.
   Definition eqb := Ascii.eqb.
@@ -194,6 +196,7 @@ End Ascii_as_OT.
 (** [String] is an ordered type with respect to the usual lexical order. *)
 
 Module String_as_OT <: UsualOrderedType.
+  Universe Definition ut := Set.
   Definition t := string.
   Include HasUsualEq <+ UsualIsEq.
   Definition eqb := String.eqb.

@@ -23,6 +23,8 @@ Set Firstorder Depth 2.
 Module DepOfNodep (Import M: S) <: Sdep with Module E := M.E.
   #[local] Ltac Tauto.intuition_solver ::= auto with bool set.
 
+  Universe Definition u := M.u.
+
   Definition empty : {s : t | Empty s}.
   Proof.
     exists empty; auto with set.
@@ -358,6 +360,7 @@ End DepOfNodep.
 
 Module NodepOfDep (M: Sdep) <: S with Module E := M.E.
   Import M.
+  Universe Definition u := M.u.
 
   Module ME := OrderedTypeFacts E.
 

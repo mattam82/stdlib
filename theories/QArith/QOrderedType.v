@@ -15,6 +15,7 @@ From Stdlib Require Import QArith_base Equalities Orders OrdersTac.
 (** * DecidableType structure for rational numbers *)
 
 Module Q_as_DT <: DecidableTypeFull.
+ Universe Definition ut := Set.
  Definition t := Q.
  Definition eq := Qeq.
  Definition eq_equiv := Q_Setoid.

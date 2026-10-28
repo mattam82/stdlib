@@ -668,7 +668,8 @@ Qed.
 
 From Stdlib Require OrderedType.
 
-Module OT <: OrderedType.OrderedType with Definition t := string.
+Module OT <: OrderedType.OrderedType with Universe Definition ut := Set with Definition t := string.
+  Universe Definition ut := Set.
   Definition t := string.
 
   Definition eq s1 s2 := compare s1 s2 = Eq.

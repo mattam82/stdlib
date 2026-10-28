@@ -24,6 +24,8 @@ Module Nat
 
 Include Corelib.Init.Nat.
 
+Universe Definition ut := Set.
+
 (** When including property functors, inline t eq zero one two lt le succ *)
 
 Set Inline Level 50.

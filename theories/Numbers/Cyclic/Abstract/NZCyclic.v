@@ -33,6 +33,7 @@ Module NZCyclicAxiomsMod (Import Cyclic : CyclicType) <: NZAxiomsSig.
 
 #[local] Notation "[| x |]" := (ZnZ.to_Z x) (at level 0, x at level 99).
 
+Universe Definition ut := Set.
 Definition eq (n m : t) := [| n |] = [| m |].
 Definition zero := ZnZ.zero.
 Definition one := ZnZ.one.

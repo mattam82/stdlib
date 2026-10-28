@@ -26,7 +26,8 @@ End NopT.
 (** * Structure with just a base type [t] *)
 
 Module Type Typ.
-  Parameter Inline(10) t : Type.
+  Universe Parameter ut.
+  Parameter Inline(10) t : Type@{ut}.
 End Typ.
 
 (** * Structure with an equality relation [eq] *)

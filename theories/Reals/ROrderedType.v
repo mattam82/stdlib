@@ -28,6 +28,7 @@ Proof.
 Qed.
 
 Module R_as_UBE <: UsualBoolEq.
+ Universe Definition ut := Set.
  Definition t := R.
  Definition eq := @eq R.
  Definition eqb := Reqb.

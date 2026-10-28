@@ -1,5 +1,6 @@
 From Stdlib Require Import FSetAVL.
 Declare Module NatKey : OrderedType.OrderedType
+    with Universe Definition ut := Set
     with Definition t := nat
     with Definition eq := @ eq nat.
 #[local] Remove Hints NatKey.eq_trans NatKey.eq_refl.

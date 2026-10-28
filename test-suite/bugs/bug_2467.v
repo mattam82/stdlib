@@ -24,6 +24,7 @@ Parameter Name_eq_leibniz : forall {s s' : Name},
                          -> s = s'.
 
 Module NameOrderedTypeAlt.
+Universe Definition ut := Set.
 Definition t := Name.
 Definition compare := Name_compare.
 Definition compare_sym := @Name_compare_sym.

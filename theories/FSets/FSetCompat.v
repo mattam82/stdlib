@@ -18,13 +18,19 @@ Unset Strict Implicit.
 
 (** * From new Weak Sets to old ones *)
 
+(** The sets of [MSetInterface] live in an anonymous global universe: the
+    backported sets live in the following one. *)
+Universe backport_u.
+
 Module Backport_WSets
  (E:DecidableType.DecidableType)
- (M:MSetInterface.WSets with Definition E.t := E.t
+ (M:MSetInterface.WSets with Universe Definition E.ut := E.ut
+                        with Definition E.t := E.t
                         with Definition E.eq := E.eq)
  <: FSetInterface.WSfun E.
 
  Definition elt := E.t.
+ Universe Definition u := backport_u.
  Definition t := M.t.
 
  Implicit Type s : t.
@@ -170,7 +176,8 @@ End Backport_WSets.
 
 Module Backport_Sets
  (O:OrderedType.OrderedType)
- (M:MSetInterface.Sets with Definition E.t := O.t
+ (M:MSetInterface.Sets with Universe Definition E.ut := O.ut
+                       with Definition E.t := O.t
                        with Definition E.eq := O.eq
                        with Definition E.lt := O.lt)
  <: FSetInterface.S with Module E:=O.
@@ -224,11 +231,14 @@ End Backport_Sets.
 
 Module Update_WSets
  (E:Equalities.DecidableType)
- (M:FSetInterface.WS with Definition E.t := E.t
+ (M:FSetInterface.WS with Universe Definition E.ut := E.ut
+                     with Definition E.t := E.t
                      with Definition E.eq := E.eq)
  <: MSetInterface.WSetsOn E.
 
+ Universe Definition uelt := E.ut.
  Definition elt := E.t.
+ Universe Definition ut := M.u.
  Definition t := M.t.
 
  Implicit Type s : t.
@@ -349,7 +359,8 @@ End Update_WSets.
 
 Module Update_Sets
  (O:Orders.OrderedType)
- (M:FSetInterface.S with Definition E.t := O.t
+ (M:FSetInterface.S with Universe Definition E.ut := O.ut
+                    with Definition E.t := O.t
                     with Definition E.eq := O.eq
                     with Definition E.lt := O.lt)
  <: MSetInterface.Sets with Module E:=O.

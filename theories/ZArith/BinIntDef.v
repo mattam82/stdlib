@@ -29,6 +29,7 @@ Module Z.
 
 Include BinNums.IntDef.Z.
 
+Universe Definition ut := Set.
 Definition t := Z.
 
 (** ** Nicer names [Z.pos] and [Z.neg] for constructors *)

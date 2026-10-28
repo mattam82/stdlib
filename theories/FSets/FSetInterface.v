@@ -49,8 +49,8 @@ Create HintDb set.
 Module Type WSfun (E : DecidableType).
 
   Definition elt := E.t.
-
-  Parameter t : Type. (** the abstract type of sets *)
+  Universe Parameter u.
+  Parameter t : Type@{u}. (** the abstract type of sets *)
 
   (** Logical predicates *)
   Parameter In : elt -> t -> Prop.
@@ -385,7 +385,8 @@ Module Type Sdep.
   Declare Module E : OrderedType.
   Definition elt := E.t.
 
-  Parameter t : Type.
+  Universe Parameter u.
+  Parameter t : Type@{u}.
 
   Parameter In : elt -> t -> Prop.
   Definition Equal s s' := forall a : elt, In a s <-> In a s'.

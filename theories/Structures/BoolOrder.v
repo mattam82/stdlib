@@ -86,6 +86,7 @@ Qed.
 
 (* Module structure *)
 Module BoolOrd <: UsualDecidableTypeFull <: OrderedTypeFull <: TotalOrder.
+  Universe Definition ut := Set.
   Definition t := bool.
   Definition eq := @eq bool.
   Definition eq_equiv := @eq_equivalence bool.

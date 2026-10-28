@@ -253,6 +253,7 @@ End Sort.
 (** An example *)
 
 Module NatOrder <: TotalLeBool.
+  Universe Definition ut := Set.
   Definition t := nat.
   Fixpoint leb x y :=
     match x, y with

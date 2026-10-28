@@ -29,7 +29,8 @@ Module PositiveSet <: S with Module E:=PositiveOrderedTypeBits.
 
   Module E:=PositiveOrderedTypeBits.
 
-  Definition elt := positive : Type.
+  Universe Definition uelt := Set.
+  Definition elt := positive.
 
   Inductive tree :=
     | Leaf : tree
@@ -37,7 +38,8 @@ Module PositiveSet <: S with Module E:=PositiveOrderedTypeBits.
 
   Scheme tree_ind := Induction for tree Sort Prop.
 
-  Definition t := tree : Type.
+  Universe Definition ut := Set.
+  Definition t := tree.
 
   Definition empty : t := Leaf.
 

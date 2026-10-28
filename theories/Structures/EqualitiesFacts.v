@@ -192,7 +192,8 @@ End KeyDecidableType.
    over their cartesian product. *)
 
 Module PairDecidableType(D1 D2:DecidableType) <: DecidableType.
-
+ Universe pairu. Constraint D1.ut <= pairu. Constraint D2.ut <= pairu.
+ Universe Definition ut := pairu.
  Definition t := (D1.t * D2.t)%type.
 
  Definition eq := (D1.eq * D2.eq)%signature.
@@ -212,6 +213,8 @@ End PairDecidableType.
 (** Similarly for pairs of UsualDecidableType *)
 
 Module PairUsualDecidableType(D1 D2:UsualDecidableType) <: UsualDecidableType.
+ Universe pairu. Constraint D1.ut <= pairu. Constraint D2.ut <= pairu.
+ Universe Definition ut := pairu.
  Definition t := (D1.t * D2.t)%type.
  Definition eq := @eq t.
 #[global]

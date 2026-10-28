@@ -29,8 +29,8 @@ Arguments GT [X lt eq x y] _.
 Create HintDb ordered_type.
 
 Module Type MiniOrderedType.
-
-  Parameter Inline t : Type.
+  Universe Parameter ut.
+  Parameter Inline t : Type@{ut}.
 
   Parameter Inline eq : t -> t -> Prop.
   Parameter Inline lt : t -> t -> Prop.
@@ -118,6 +118,7 @@ Module OrderedTypeFacts (Import O: OrderedType).
   Proof. intros x y; destruct (compare x y); auto. Qed.
 
   Module TO.
+   Universe Definition ut := ut.
    Definition t := t.
    Definition eq := eq.
    Definition lt := lt.

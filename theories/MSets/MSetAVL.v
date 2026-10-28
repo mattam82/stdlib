@@ -54,6 +54,8 @@ Module Ops (Import I:Int)(X:OrderedType) <: MSetInterface.Ops X.
     provided by this generic functor. *)
 
 Include MSetGenTree.Ops X I.
+Universe Definition uelt := X.ut.
+Universe Definition ut := X.ut.
 
 Definition t := tree.
 

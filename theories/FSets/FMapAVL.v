@@ -2514,3 +2514,4 @@ Module Make_ord (X: OrderedType)(D: OrderedType)
  <: Sord with Module Data := D
             with Module MapS.E := X
  :=IntMake_ord(Z_as_Int)(X)(D).
+Print Module Make_ord.

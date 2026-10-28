@@ -26,6 +26,7 @@ Module N.
 
 Include BinNums.NatDef.N.
 
+Universe Definition ut := Set.
 Definition t := N.
 
 (** ** Nicer name [N.pos] for constructor [Npos] *)

@@ -18,7 +18,8 @@ whereas [compare], defined in [OrderedType.v] is [EQ _ | LT _ | GT _ ]
 
 Module Type OrderedTypeAlt.
 
- Parameter t : Type.
+ Universe Parameter ut.
+ Parameter t : Type@{ut}.
 
  Parameter compare : t -> t -> comparison.
 
@@ -36,6 +37,7 @@ End OrderedTypeAlt.
 Module OrderedType_from_Alt (O:OrderedTypeAlt) <: OrderedType.
  Import O.
 
+ Universe Definition ut := ut.
  Definition t := t.
 
  Definition eq x y := (x?=y) = Eq.
@@ -91,6 +93,7 @@ Module OrderedType_to_Alt (O:OrderedType) <: OrderedTypeAlt.
  Module MO:=OrderedTypeFacts(O).
  Import MO.
 
+ Universe Definition ut := ut.
  Definition t := t.
 
  Definition compare x y := match compare x y with

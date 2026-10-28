@@ -20,7 +20,8 @@ From Stdlib Require Import NArith Ndec.
     the equality is the usual one of Coq. *)
 
 Module Type UsualOrderedType.
- Parameter Inline t : Type.
+ Universe Parameter ut.
+ Parameter Inline t : Type@{ut}.
  Definition eq := @eq t.
  Parameter Inline lt : t -> t -> Prop.
  Definition eq_refl := @eq_refl t.
@@ -40,6 +41,7 @@ Module UOT_to_OT (U:UsualOrderedType) <: OrderedType := U.
 
 Module Nat_as_OT <: UsualOrderedType.
 
+  Universe Definition ut := Set.
   Definition t := nat.
 
   Definition eq := @eq nat.
@@ -74,6 +76,7 @@ End Nat_as_OT.
 
 Module Z_as_OT <: UsualOrderedType.
 
+  Universe Definition ut := Set.
   Definition t := Z.
   Definition eq := @eq Z.
   Definition eq_refl := @eq_refl t.
@@ -105,6 +108,7 @@ End Z_as_OT.
 #[local] Open Scope positive_scope.
 
 Module Positive_as_OT <: UsualOrderedType.
+  Universe Definition ut:=Set.
   Definition t:=positive.
   Definition eq:=@eq positive.
   Definition eq_refl := @eq_refl t.
@@ -136,6 +140,7 @@ End Positive_as_OT.
 (** [N] is an ordered type with respect to the usual order on natural numbers. *)
 
 Module N_as_OT <: UsualOrderedType.
+  Universe Definition ut:=Set.
   Definition t:=N.
   Definition eq:=@eq N.
   Definition eq_refl := @eq_refl t.
@@ -166,6 +171,8 @@ Module PairOrderedType(O1 O2:OrderedType) <: OrderedType.
  Module MO1:=OrderedTypeFacts(O1).
  Module MO2:=OrderedTypeFacts(O2).
 
+ Universe pairu. Constraint O1.ut <= pairu. Constraint O2.ut <= pairu.
+ Universe Definition ut := pairu.
  Definition t := prod O1.t O2.t.
 
  Definition eq x y := O1.eq (fst x) (fst y) /\ O2.eq (snd x) (snd y).
@@ -233,6 +240,7 @@ End PairOrderedType.
   [positive] as indexes for sets or maps (see FSetPositive and FMapPositive. *)
 
 Module PositiveOrderedTypeBits <: UsualOrderedType.
+  Universe Definition ut:=Set.
   Definition t:=positive.
   Definition eq:=@eq positive.
   Definition eq_refl := @eq_refl t.
@@ -318,6 +326,7 @@ Module PositiveOrderedTypeBits <: UsualOrderedType.
 End PositiveOrderedTypeBits.
 
 Module Ascii_as_OT <: UsualOrderedType.
+  Universe Definition ut := Set.
   Definition t := ascii.
 
   Definition eq := @eq ascii.
@@ -395,7 +404,7 @@ End Ascii_as_OT.
 (** [String] is an ordered type with respect to the usual lexical order. *)
 
 Module String_as_OT <: UsualOrderedType.
-
+  Universe Definition ut := Set.
   Definition t := string.
 
   Definition eq := @eq string.

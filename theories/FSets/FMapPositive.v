@@ -71,7 +71,7 @@ Module PositiveMap <: S with Module E:=PositiveOrderedTypeBits.
   Module E:=PositiveOrderedTypeBits.
   Module ME:=KeyOrderedType E.
 
-  Definition key := positive : Type.
+  Definition key := positive : Set.
 
   #[universes(template)]
   Inductive tree (A : Type) :=

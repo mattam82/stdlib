@@ -29,8 +29,9 @@ Unset Strict Implicit.
 (** ** The set operations. *)
 
 Module Ops (X: DecidableType) <: WOps X.
-
+  Universe Definition uelt := X.ut.
   Definition elt := X.t.
+  Universe Definition ut := X.ut.
   Definition t := list elt.
 
   Definition empty : t := nil.
